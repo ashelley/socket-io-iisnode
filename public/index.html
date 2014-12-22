@@ -1,0 +1,18 @@
+<body>
+	<content id="content" />
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+	  var socket = io.connect('http://localhost'),
+	  	data = {
+	  		value: 1
+	  	};
+	  socket.on('response', function (serverData) {
+	  	data.value++;	  	
+		document.getElementById("content").innerHTML = serverData.value;		
+	    socket.emit('request', data);
+	  });
+	  socket.on('connect', function() {
+	  	socket.emit('request', data)
+	  });
+	</script>
+</script>
