@@ -6,8 +6,6 @@ var express = require('express'),
 	io = require('socket.io')(server, {path: virtualPath + '/socket.io'}),  
 	port = process.env.PORT || 3000;
 
-console.log(virtualPath);
-
 app.use(virtualPath, express.static(__dirname + '/public'));
 
 io.on('connection', function (socket) {
