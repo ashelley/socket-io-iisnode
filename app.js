@@ -2,10 +2,13 @@ var express = require('express'),
 	http = require('http'),
 	app = express(),
 	server = http.createServer(app),
-	io = require('socket.io')(server),
+  virtualPath = process.env.VIRTUAL_PATH,
+	io = require('socket.io')(server, {path: virtualPath + '/socket.io'}),  
 	port = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + '/public'));
+console.log(virtualPath);
+
+app.use(virtualPath, express.static(__dirname + '/public'));
 
 io.on('connection', function (socket) {
   socket.on('request', function (data) {

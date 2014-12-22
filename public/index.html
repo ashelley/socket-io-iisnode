@@ -1,8 +1,8 @@
 <body>
 	<content id="content" />
-	<script src="/socket.io/socket.io.js"></script>
+	<script src="/socketiotest/socket.io/socket.io.js"></script>
 	<script>
-	  var socket = io.connect('http://localhost'),
+	  var socket = io.connect('http://localhost', {path: "/socketiotest/socket.io"}),
 	  	data = {
 	  		value: 1
 	  	};
